@@ -1,0 +1,41 @@
+<h1 id="tableLabel">Employees List</h1>
+
+<p>Please enter an id to search for an Employee (leave empty to query all employees).</p>
+<form #formData="ngForm" (ngSubmit)="getEmployees(formData.value)">
+
+  <input type="text" name="employeeId" ngModel />
+  <br />
+  <br />
+  <input type="submit" value="Get Employee(s)" class="btn btn-primary">
+</form>
+<br />
+<br />
+<p *ngIf="loadingEmployees"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Type Of Contract</th>
+      <th>Role</th>
+      <th>Role Description</th>
+      <th>Hourly Salary</th>
+      <th>Monthly Salary</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.typeOfContract }}</td>
+      <td>{{ employee.roleName }}</td>
+      <td>{{ employee.roleDescription }}</td>
+      <td>{{ employee.hourlySalary }}</td>
+      <td>{{ employee.monthlySalary }}</td>
+      <td>{{ employee.salary }}</td>
+    </tr>
+  </tbody>
+</table>
+
